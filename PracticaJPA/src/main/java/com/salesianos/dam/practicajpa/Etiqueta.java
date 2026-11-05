@@ -20,4 +20,6 @@ public class Etiqueta {
 
     @Column(columnDefinition = "VARCHAR(512)")
     private String nombre;
+
+
 }
