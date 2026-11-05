@@ -1,15 +1,11 @@
 package com.salesianos.dam.practicajpa;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -23,6 +19,10 @@ public class Comentario {
 
 
     private String autor;
+
+    @ManyToOne
+    @JoinColumn(name = "tarea_id")
+    private Tarea tarea;
 
 
 

@@ -1,15 +1,14 @@
 package com.salesianos.dam.practicajpa;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -24,8 +23,24 @@ public class Proyecto {
 
     private String descripcion;
 
-    
+    @OneToMany(mappedBy = "proyecto", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Tarea> tareas = new ArrayList<>();
 
 
+
+
+    //Métodos helper para ayudar al método de borrado Cascade
+    public void agregarTarea (Tarea tarea) {
+
+        tareas.add(tarea);
+
+    }
+
+
+    public void borrarTarea (Tarea tarea){
+
+        tareas.remove(tarea);
+
+    }
 
 }
